@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import TrafficLight from './TrafficLight';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [isRunning, setIsRunning] = useState(false);
+
+  const startLight = () => setIsRunning(true);
+  const stopLight = () => setIsRunning(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1>Traffic Light</h1>
+      <div className="traffic-light-container">
+        <TrafficLight isRunning={isRunning} />
+        <br></br>
+        <TrafficLight isRunning={isRunning} />
+        <br/>
+        <TrafficLight isRunning={isRunning} />
+        <br/>
+        <TrafficLight isRunning={isRunning} />
+      </div>
+      <div className="controls">
+        <button onClick={startLight}>Start</button>
+        <button onClick={stopLight}>Stop</button>
+      </div>
     </div>
   );
-}
+};
 
 export default App;
